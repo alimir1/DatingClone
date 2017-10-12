@@ -50,6 +50,11 @@ class DraggableImageView: UIView {
         addSubview(contentView)
     }
 
+    func restoreRyan() {
+        self.center = originalCenter
+        self.transform = CGAffineTransform.identity
+    }
+
     @IBAction func onPanGesture(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: self.superview)
         switch sender.state {
@@ -63,6 +68,22 @@ class DraggableImageView: UIView {
                 rotationRadians = -rotationRadians
             }
             self.transform = CGAffineTransform(rotationAngle: rotationRadians)
+        case .ended:
+            if translation.x > 50 {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.center.x = self.originalCenter.x + 375
+                })
+
+            } else if translation.x < -50 {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.center.x = self.originalCenter.x - 375
+                })
+            } else {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.center = self.originalCenter
+                    self.transform = CGAffineTransform.identity
+                })
+            }
         default:
             break
         }

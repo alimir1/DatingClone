@@ -19,6 +19,9 @@ class ViewController: UIViewController {
         profileImageView.photoImage = #imageLiteral(resourceName: "ryan")
     }
 
+    @IBAction func onButton(_ sender: Any) {
+        profileImageView.restoreRyan()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
