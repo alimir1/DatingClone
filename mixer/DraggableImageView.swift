@@ -52,7 +52,6 @@ class DraggableImageView: UIView {
 
     @IBAction func onPanGesture(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: self.superview)
-        let velocity = sender.velocity(in: self.superview)
         switch sender.state {
         case .began:
             originalCenter = self.center
