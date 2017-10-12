@@ -8,6 +8,14 @@
 
 import UIKit
 
+extension Int {
+    var degreesToRadians: Double { return Double(self) * .pi / 180 }
+}
+extension FloatingPoint {
+    var degreesToRadians: Self { return self * .pi / 180 }
+    var radiansToDegrees: Self { return self * 180 / .pi }
+}
+
 class DraggableImageView: UIView {
 
     @IBOutlet var contentView: UIView!
@@ -43,13 +51,21 @@ class DraggableImageView: UIView {
     }
 
     @IBAction func onPanGesture(_ sender: UIPanGestureRecognizer) {
-        print("panning")
         let translation = sender.translation(in: self.superview)
+        let velocity = sender.velocity(in: self.superview)
+        print("x: \(translation.x), velX: \(velocity.x)")
         switch sender.state {
         case .began:
             originalCenter = self.center
         case .changed:
             self.center.x = originalCenter.x + translation.x
+            var rotationRadians = max(translation.x.degreesToRadians, CGFloat(35.degreesToRadians))
+            if velocity.x > 0 {
+                self.transform = CGAffineTransform.identity
+                rotationRadians = -rotationRadians
+            }
+            print("rotation: \(rotationRadians)")
+            self.transform = CGAffineTransform(rotationAngle: rotationRadians)
         default:
             break
         }
