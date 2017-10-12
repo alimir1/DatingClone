@@ -53,18 +53,16 @@ class DraggableImageView: UIView {
     @IBAction func onPanGesture(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: self.superview)
         let velocity = sender.velocity(in: self.superview)
-        print("x: \(translation.x), velX: \(velocity.x)")
         switch sender.state {
         case .began:
             originalCenter = self.center
         case .changed:
             self.center.x = originalCenter.x + translation.x
-            var rotationRadians = max(translation.x.degreesToRadians, CGFloat(35.degreesToRadians))
-            if velocity.x > 0 {
-                self.transform = CGAffineTransform.identity
+            let z = min(abs(translation.x), 15)
+            var rotationRadians = (z * .pi / 180.0)
+            if translation.x < 0 {
                 rotationRadians = -rotationRadians
             }
-            print("rotation: \(rotationRadians)")
             self.transform = CGAffineTransform(rotationAngle: rotationRadians)
         default:
             break
