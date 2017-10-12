@@ -9,32 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var profileImageView: UIImageView!
+
+    @IBOutlet weak var profileImageView: DraggableImageView!
+
     var initialImageCenter: CGPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        profileImageView.photoImage = #imageLiteral(resourceName: "ryan")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    @IBAction func onPanDrag(_ sender: UIPanGestureRecognizer) {
-        let translation = sender.translation(in: self.view)
-        
-        switch sender.state {
-        case .began:
-            initialImageCenter = profileImageView.center
-        case .changed:
-            profileImageView.center.x = initialImageCenter.x + translation.x
-        default:
-            break
-        }
-        
-    }
-    
+    }    
 }
 

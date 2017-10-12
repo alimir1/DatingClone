@@ -24,19 +24,16 @@
                                 <rect key="frame" x="0.0" y="479" width="375" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ryan" id="ZyB-NZ-Npv">
-                                <rect key="frame" x="35" y="72" width="304" height="304"/>
+                            <view contentMode="scaleToFill" misplaced="YES" id="Vr8-Ph-IHk" customClass="DraggableImageView" customModule="mixer" customModuleProvider="target">
+                                <rect key="frame" x="35" y="131" width="304" height="304"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="eYC-S3-GO7" appends="YES" id="2JQ-t7-BbP"/>
-                                </connections>
-                            </imageView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="profileImageView" destination="ZyB-NZ-Npv" id="e7z-uC-M48"/>
+                        <outlet property="profileImageView" destination="Vr8-Ph-IHk" id="hDn-U2-KT4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -52,6 +49,5 @@
     <resources>
         <image name="action_buttons" width="320" height="108"/>
         <image name="nav_bar" width="320" height="65"/>
-        <image name="ryan" width="449" height="514"/>
     </resources>
 </document>
